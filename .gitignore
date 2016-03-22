@@ -1,3 +1,4 @@
 #ignore generated classes
 target/*
 *.class
+/target/

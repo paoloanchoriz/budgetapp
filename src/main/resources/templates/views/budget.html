@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edget" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Insert title here</title>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="css/budgetKo.css" rel="stylesheet" />
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">BudgetKo</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Dashboard</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="#">Overview <span
+							class="sr-only">(current)</span></a></li>
+					<li><a href="#">Reports</a></li>
+					<li><a href="#">Analytics</a></li>
+					<li><a href="#">Export</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item</a></li>
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+					<li><a href="">More navigation</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+				</ul>
+			</div>
+
+			<div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-2 main">
+				<div class="panel panel-primary row placeholders">
+					<div class="panel-heading">Create Budget</div>
+			
+					<div class="panel-body">
+						<form th:action="@{/budget}" method="post" th:object="${budgetEntry}" role="form">
+							<input type="hidden" th:value="${'123456789'}" name="ownerId"/>
+							<!-- th:object -->
+							<div class="form-group">
+								<label class="control-label" for="name">Budget Name: </label>
+								<input class="form-control" type="text" th:field="*{name}" />
+							</div>
+							
+							<div class="form-group"> 
+								<label class="control-label" for="amount">Amount Allocated: </label>
+								<input class="form-control" type="text"	th:field="*{amount}" /> 
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label" for="description">Description: </label>
+								<textarea class="form-control" th:field="*{description}" rows="5"></textarea>
+							</div> 
+							
+							<div class="form-inline form-group">
+								<label class="control-label" th:text="${'Date Coverage: '}">Date Coverage: </label>
+								<input class="form-control" type="text" th:field="*{fromdate}" />
+								<input class="form-control" type="text" th:field="*{todate}" />
+							</div>
+							
+							<button type="submit" th:text="${'Submit'}" class="btn btn-default">Submit</button>
+						</form>
+						
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<script src="jquery/jquery-1.12.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

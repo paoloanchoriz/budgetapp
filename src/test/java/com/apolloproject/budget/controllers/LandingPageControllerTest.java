@@ -1,7 +1,5 @@
 package com.apolloproject.budget.controllers;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
