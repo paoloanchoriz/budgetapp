@@ -60,45 +60,40 @@
 				</ul>
 			</div>
 
-			<div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-2 main">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="panel panel-primary row placeholders">
-					<div class="panel-heading" th:text="${budget.name}">Budget Name</div>
-					<div class="panel-body" ><em th:text="${budget.description}">Description</em></div>
-					
-					<ul class="list-group">
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-sm-3"><label>Interval</label></div>
-								<div class="col-sm-6"><span th:text="${budget.intervalType.description}">interval description</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><label>Inclusive Date</label></div>
-								<div class="col-md-9"><span th:text="${budget.inclusiveDates}">inclusive date</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><label>Allocated Amount </label></div>
-								<div class="col-md-9"><span th:text="${budget.allocation}">20000</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-9"><a th:href="@{/budget/update/} + ${budget.id}">update budget information</a></div>
-							</div>
-							
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><a th:href="@{/budget/list}">go back to list</a></div>
-							</div>
-						</li>
-					</ul>
+					<div class="panel-heading">Budget List</div>
+			
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th class="col-md-2">Name</th>
+										<th class="col-md-1">Interval</th>
+										<th class="col-md-3">Inclusive Dates</th>
+										<th class="col-md-2">Total Allocation</th>
+										<th class="col-md-1">Expected</th>
+										<th class="col-md-1">Actual</th>
+										<th class="col-md-2">Description</th>
+									</tr>
+								</thead>
+								<tr th:each="budget : ${budgetList}">
+									<td><a th:href="@{/budget/} + ${budget.id}" th:text="${budget.name}">name</a></td>
+									<td th:text="${budget.intervalType.description}">interval type</td>
+									<td th:text="${budget.inclusiveDates}">date inclusive</td>
+									<td th:text="${budget.allocation}">allocation</td>
+									<td>99999</td>
+									<td>99999</td>
+									<td th:text="${budget.description}">description</td>
+								</tr>
+							</table>
+						</div>
+						<div>
+							<span><a th:href="@{/budget}">Add Budget Plan</a></span>
+						</div>
+					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
