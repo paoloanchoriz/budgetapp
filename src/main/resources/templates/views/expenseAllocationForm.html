@@ -62,46 +62,51 @@
 
 			<div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-2 main">
 				<div class="panel panel-primary row placeholders">
-					<div class="panel-heading" th:text="${budget.name}">Budget Name</div>
-					<div class="panel-body" ><em th:text="${budget.description}">Description</em></div>
-					
-					<ul class="list-group">
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-sm-3"><label>Interval</label></div>
-								<div class="col-sm-6"><span th:text="${budget.intervalType.description}">interval description</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><label>Inclusive Date</label></div>
-								<div class="col-md-9"><span th:text="${budget.inclusiveDates}">inclusive date</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><label>Allocated Amount </label></div>
-								<div class="col-md-9"><span th:text="${budget.allocation}">20000</span></div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-9"><a th:href="@{/budget/update/} + ${budget.id}">update budget information</a></div>
+					<div class="panel-heading" th:text="${budget.name}">Budget name</div>
+			
+					<div class="panel-body">
+						<em th:text="${budget.description}">Description</em>
+					</div>
+					<div class="panel-body">
+						<form th:action="@{/budgetEntry/} + ${budget.id}" method="post" th:object="${budgetEntry}" role="form">
+							<!-- th:object -->
+							<div class="form-group">
+								<label class="control-label" for="name">Entry Name: </label>
+								<input class="form-control" type="text" th:field="*{name}" />
 							</div>
 							
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-9"><a th:href="@{/budgetEntry/} + ${budget.id}">add budget entry</a></div>
+							<div class="form-group"> 
+								<label class="control-label" for="amount">Amount: </label>
+								<input class="form-control" type="text"	th:field="*{amount}" /> 
 							</div>
 							
-						</li>
-						<li class="list-group-item">
-							<div class="row">
-								<div class="col-md-3"><a th:href="@{/budget/list}">go back to list</a></div>
+							<div class="form-group">
+								<label class="control-label" for="description">Description: </label>
+								<textarea class="form-control" th:field="*{description}" rows="5"></textarea>
+							</div> 
+							
+							<div class="form-group">
+								<label class="control-label" for="category">Category: </label>
+								<input class="form-control" type="text" th:field="*{category}" />
 							</div>
-						</li>
-					</ul>
+							
+							<div class="form-group" >
+								<label class="control-label" for="type">Type: </label>
+								<select class="form-control" th:field="*{type}" >
+									<option th:each="entryType : ${(T(com.apolloproject.budget.model.EntryType)).values()}" 
+										th:value="${entryType}"
+										th:text="${entryType.description}"
+									/>
+								</select>
+							</div>
+							
+							<div class="form-group form-inline">
+								<button type="submit" value="save" name="action" th:text="${'Save'}" class="btn btn-default">Save</button>
+								<button type="submit" onclick="history.go(-1)" th:text="${'Cancel'}" class="btn btn-default">Cancel</button>
+							</div>
+						</form>
+						
+					</div>
 				</div>
 
 

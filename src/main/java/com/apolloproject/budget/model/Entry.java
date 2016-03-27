@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.springframework.data.annotation.Id;
-
 
 public class Entry implements Serializable {
 
@@ -14,7 +12,6 @@ public class Entry implements Serializable {
 	 */
 	private static final long serialVersionUID = 667796086957428556L;
 	
-	@Id
 	private BigInteger id;
 	
 	private String name;
@@ -62,7 +59,7 @@ public class Entry implements Serializable {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		boolean returnVal = false;
@@ -74,6 +71,8 @@ public class Entry implements Serializable {
 	
 	@Override
 	public int hashCode() {
-		return id.hashCode();
+		int hashcode = 0;
+		if(id != null) hashcode = id.hashCode();
+		return hashcode;
 	}
 }

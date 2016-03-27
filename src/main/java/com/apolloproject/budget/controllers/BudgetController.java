@@ -48,7 +48,7 @@ public class BudgetController {
 		return "budgetForm";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, params = "action = save")
+	@RequestMapping(method = RequestMethod.POST)
 	public String budgetPage(@ModelAttribute(value = "budget") Budget budget, 
 			BindingResult result, Model model) {
 		budgetRepository.save(budget);

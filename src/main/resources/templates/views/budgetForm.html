@@ -88,8 +88,12 @@
 								<label class="control-label" th:text="${'Date Coverage: '}">Date Coverage: </label>
 								<input class="form-control" type="text" th:field="*{fromdate}" />
 								<input class="form-control" type="text" th:field="*{todate}" />
+								
+							</div>
+							
+							<div class="form-group form-inline">
+								<label class="control-label">Interval: </label>
 								<select class="form-control" th:field="*{intervalType}">
-									<option value="">-- Select --</option>
 									<option 
 										th:each="intervalType : ${T(com.apolloproject.budget.model.RepeatIntervalType).values()}"
 										th:value="${intervalType}"
@@ -97,8 +101,10 @@
 								</select>
 							</div>
 							
-							<button type="submit" value="save" name="action" th:text="${'Save'}" class="btn btn-default">Save</button>
-							<button type="submit" onclick="history.go(-1)" th:text="${'Cancel'}" class="btn btn-default">Save</button>
+							<div class="form-group form-inline">
+								<button type="submit" value="save" name="action" th:text="${'Save'}" class="btn btn-default">Save</button>
+								<button type="submit" onclick="history.go(-1)" th:text="${'Cancel'}" class="btn btn-default">Cancel</button>
+							</div>
 						</form>
 						
 					</div>

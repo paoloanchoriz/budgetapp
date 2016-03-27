@@ -134,7 +134,7 @@ public class Budget implements Serializable {
 			}
 			
 			if(isFromAvailable && isToAvailable) {
-				sb.append(" to ");
+				sb.append(" - ");
 			}
 			
 			if(isToAvailable) {
@@ -143,4 +143,6 @@ public class Budget implements Serializable {
 		}
 		return sb.toString();
 	}
+	
+	
 }
